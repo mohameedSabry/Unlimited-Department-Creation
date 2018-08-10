@@ -5,21 +5,21 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#jstree').jstree({
-                    "core" : {
-                        'data' :{!! load_dep(old('parent')) !!},
-                        "themes" : {
-                            "variant" : "large"
+                    "core": {
+                        'data':{!! load_dep(old('parent')) !!},
+                        "themes": {
+                            "variant": "large"
                         }
                     },
-                    "checkbox" : {
-                        "keep_selected_style" : false
+                    "checkbox": {
+                        "keep_selected_style": false
                     },
-                    "plugins" : [ "wholerow"]
+                    "plugins": ["wholerow"]
                 });
 
-                $('#jstree').on('changed.jstree',function (e,data) {
-                    var  i ,j ,r =[] ;
-                    for (i = 0, j = data.selected.length;i<j ; i++){
+                $('#jstree').on('changed.jstree', function (e, data) {
+                    var i, j, r = [];
+                    for (i = 0, j = data.selected.length; i < j; i++) {
                         r.push(data.instance.get_node(data.selected[i]).id);
                     }
                     $('#parent').val(r.join(', '));
@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="box">
                     <div class="box-body">
-                        {!!   Form::open(array('url' => 'saveDept')) !!}
+                        {!! Form::open(array('url' => 'saveDept')) !!}
                         {!! Form::token(); !!}
                         <input type="hidden" id="parent" name="parent" value="{{old('parent')}}">
                         <div class="form-group">
@@ -68,14 +68,16 @@
                             <div class="clearfix"></div>
                             <div id="jstree"></div>
                             <div class="clearfix"></div>
-                        </div> <div class="form-group">
+                        </div>
+                        <div class="form-group">
                             {!!   Form::label('description', 'Description'); !!}
                             {!!   Form::textarea('description', old('description'),['class'=>'form-control']) !!}
-                        </div> <div class="form-group">
+                        </div>
+                        <div class="form-group">
                             {!!   Form::label('keyword', 'Keyword'); !!}
                             {!!   Form::text('keyword', old('keyword'),['class'=>'form-control']) !!}
                         </div>
-                        {!!   Form::submit('Submit', ['class'=>'btn btn-primary']); !!}
+                        {!!  Form::submit('Submit', ['class'=>'btn btn-primary']); !!}
                         {!!  Form::close()!!}
                     </div>
                 </div>

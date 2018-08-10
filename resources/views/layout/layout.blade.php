@@ -28,7 +28,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-        @yield('content')
+    @yield('content')
 
 </div>
 
